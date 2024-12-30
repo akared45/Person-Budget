@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@../style/Home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment.controller.ReportController">
+    <top>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10;" text="Báo cáo doanh thu" BorderPane.alignment="CENTER" />
+    </top>
+    <center>
+        <VBox prefHeight="903.0" prefWidth="203.0" spacing="10" style="-fx-padding: 10;">
+            <TitledPane fx:id="incomePane" text="Thu nhập">
+                <VBox spacing="5" style="-fx-padding: 5;">
+                    <TextField fx:id="incomeSearchField" onKeyReleased="#searchTransactions" promptText="Tìm kiếm..." />
+                    <TableView fx:id="incomeTable" styleClass="table-view">
+                        <columns>
+                            <TableColumn fx:id="incomeDateColumn" text="Ngày tháng" />
+                            <TableColumn fx:id="incomeDescriptionColumn" text="Nguồn Thu" />
+                            <TableColumn fx:id="incomeAmountColumn" text="Số Tiền" />
+                        </columns>
+                  <columnResizePolicy>
+                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+            <TitledPane fx:id="expensePane" text="Chi tiêu">
+                <VBox spacing="5" style="-fx-padding: 5;">
+                    <TextField fx:id="expenseSearchField" onKeyReleased="#searchTransactions" promptText="Tìm kiếm..." />
+                    <TableView fx:id="expenseTable" styleClass="table-view">
+                        <columns>
+                            <TableColumn fx:id="expenseDateColumn" text="Ngày tháng" />
+                            <TableColumn fx:id="expenseDescriptionColumn" text="Khoản Chi" />
+                            <TableColumn fx:id="expenseAmountColumn" text="Số Tiền" />
+                        </columns>
+                  <columnResizePolicy>
+                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+            <TitledPane fx:id="savingsPane" text="Tiết kiệm">
+                <VBox spacing="5" style="-fx-padding: 5;">
+                    <TextField fx:id="savingsSearchField" onKeyReleased="#searchTransactions" promptText="Tìm kiếm..." />
+                    <TableView fx:id="savingsTable" styleClass="table-view">
+                        <columns>
+                            <TableColumn fx:id="savingsDateColumn" text="Ngày tháng" />
+                            <TableColumn fx:id="savingsDescriptionColumn" text="Mục Tiêu" />
+                            <TableColumn fx:id="savingsAmountColumn" text="Số Tiền" />
+                        </columns>
+                  <columnResizePolicy>
+                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </center>
+    <right>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Tỷ lệ Thu - Chi - Tiết Kiệm" />
+            <PieChart fx:id="transactionPieChart" prefHeight="400.0" prefWidth="690.0" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc; -fx-border-radius: 5;" />
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="So sánh Thu - Chi - Tiết Kiệm" />
+            <BarChart fx:id="transactionBarChart" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc; -fx-border-radius: 5;">
+                <xAxis>
+                    <CategoryAxis label="Loại giao dịch" fx:id="xAxis" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Số tiền" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </right>
+</BorderPane>
