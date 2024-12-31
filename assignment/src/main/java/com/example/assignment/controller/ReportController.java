@@ -1,9 +1,9 @@
 package com.example.assignment.controller;
 
+import com.example.assignment.data.TransactionDataStore;
 import com.example.assignment.model.Transaction;
 import com.example.assignment.model.TransactionTree;
 import com.example.assignment.model.TransactionType;
-import com.example.assignment.utils.SampleDataLoader;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
@@ -41,7 +41,7 @@ public class ReportController {
 
     @FXML
     public void initialize() {
-        transactionTree = SampleDataLoader.loadSampleData();
+        transactionTree = TransactionDataStore.getTransactionTree();
         initializeTables();
         loadTableData();
         updateCharts();

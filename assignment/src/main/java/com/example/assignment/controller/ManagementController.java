@@ -1,9 +1,9 @@
 package com.example.assignment.controller;
 
+import com.example.assignment.data.TransactionDataStore;
 import com.example.assignment.model.Transaction;
 import com.example.assignment.model.TransactionTree;
 import com.example.assignment.model.TransactionType;
-import com.example.assignment.utils.SampleDataLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -43,7 +43,7 @@ public class ManagementController {
 
     @FXML
     public void initialize() {
-        transactionTree = SampleDataLoader.loadSampleData();
+        transactionTree = TransactionDataStore.getTransactionTree();
         initializeTables();
         loadTableData();
         transactionTable.setRowFactory(tv -> new TableRow<>() {
